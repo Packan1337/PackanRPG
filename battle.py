@@ -1,12 +1,13 @@
 # Module for battles
-from .fight import fight
-
-def battle(enemy, hp):
+import fight
+from classes import Enemy
+from classes import Hero
+def battle():
 
     battle_option = 0
 
-    print(enemy + " appears!")
-    print(enemy + " has " + hp)
+    print(Enemy.enemyName + " appears!")
+    print(Enemy.enemyName + " has " + Enemy.enemyHP)
     print("What would you like to do?/n")
 
     print("1. Fight")
