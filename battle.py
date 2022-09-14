@@ -1,7 +1,8 @@
 # Module for battles
 import fight
 from classes import Enemy
-from classes import Hero
+
+
 def battle():
 
     battle_option = 0

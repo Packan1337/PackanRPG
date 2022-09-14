@@ -2,13 +2,18 @@
 # Written by Aria Kalantari aka Packan, 2022
 
 from classes import Hero, Enemy
+import fight, battle
 
 # Main variables
 
 print("\nWelcome to PackanRPG!")
-hero = Hero.heroName(input("Before we begin, what is your name?: "))
 
-print("\n" + Hero.heroName + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
+an = Hero(input("First of all, what is your name?: "))
+attrs = vars(an)
+print(', '.join("%s: %s" % item for item in attrs.items()))
+# Hero.heroName(input("Before we begin, what is your name?: "))
+
+print("\n" + str(an) + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
 
 print("The menu system is very simple.")
 print("You will choose between a few numbers in order to select different options.")
@@ -35,5 +40,3 @@ elif state == 2:
     exit()
 
 # Test
-
-print(hero.heroHP)
