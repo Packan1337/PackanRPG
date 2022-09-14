@@ -8,12 +8,10 @@ import fight, battle
 
 print("\nWelcome to PackanRPG!")
 
-an = Hero(input("First of all, what is your name?: "))
-attrs = vars(an)
-print(', '.join("%s: %s" % item for item in attrs.items()))
-# Hero.heroName(input("Before we begin, what is your name?: "))
+hero = Hero(input("First of all, what is your name?: "))
+# attrs = vars(hero)
 
-print("\n" + str(an) + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
+print("\n" + str(hero) + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
 
 print("The menu system is very simple.")
 print("You will choose between a few numbers in order to select different options.")
@@ -27,7 +25,7 @@ if state == 1:
     state = int(input("1. Begin PackanRPG\n2. Read about the battle system\n\n"))
 
     if state == 1:
-        print("PackanRPG now starting...")
+        print("\nPackanRPG now starting...")
 
     elif state == 2:
         print("\nInformation about the battle system")

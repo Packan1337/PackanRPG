@@ -12,6 +12,9 @@ class Hero:
         self.heroHP = 25
         self.heroDMG = 10
 
+    def __str__(self):
+        return self.heroName
+
     @classmethod
     def from_input(cls):
         return cls(
