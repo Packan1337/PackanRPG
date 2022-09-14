@@ -1,8 +1,12 @@
 class Enemy:
 
-    enemyName = str("")
-    enemyHP = range(10, 25)
-    enemyDMG = range(5, 12)
+    def __init__(self, enemy_name):
+        self.enemyName = enemy_name
+        self.enemyHP = range(10, 25)
+        self.enemyDMG = range(5, 12)
+
+    def __str__(self):
+        return self.enemyName
 
 
 class Hero:
