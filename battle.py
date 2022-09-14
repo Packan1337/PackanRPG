@@ -6,9 +6,11 @@ from classes import Enemy
 def battle():
 
     battle_option = 0
+    enemyName = ""
+    enemyHP = ""
 
-    print(Enemy.enemyName + " appears!")
-    print(Enemy.enemyName + " has " + Enemy.enemyHP)
+    print(str(enemyName) + " appears!")
+    print(str(enemyName) + " has " + str(enemyHP))
     print("What would you like to do?/n")
 
     print("1. Fight")
