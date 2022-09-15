@@ -1,3 +1,5 @@
+
+
 class Enemy:
 
     def __init__(self, enemy_name, enemy_hp, enemy_dmg):
@@ -25,11 +27,6 @@ class Hero:
     def __str__(self):
         return self.heroName
 
-    @classmethod
-    def from_input(cls):
-        return cls(
-            input('First of all, what is your name?: ')
-        )
 
 class Item:
 

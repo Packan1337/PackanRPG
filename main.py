@@ -8,9 +8,8 @@ import fight, battle
 
 print("\nWelcome to PackanRPG!")
 
-heroName = Hero(input("First of all, what is your name?: "))
-
-print("\n" + str(heroName) + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
+heroNameMain = Hero(input("First of all, what is your name?: "))
+print("\n" + str(heroNameMain.heroName) + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
 
 print("The menu system is very simple.")
 print("You will choose between a few numbers in order to select different options.")
