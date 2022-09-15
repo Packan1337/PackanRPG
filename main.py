@@ -1,5 +1,5 @@
 # Main code for PackanRPG
-# Written by Aria Kalantari aka Packan, 2022
+# Written by Packan, 2022
 
 from classes import Hero, Enemy
 import fight, battle
@@ -9,7 +9,6 @@ import fight, battle
 print("\nWelcome to PackanRPG!")
 
 heroName = Hero(input("First of all, what is your name?: "))
-# attrs = vars(hero)
 
 print("\n" + str(heroName) + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
 
@@ -31,10 +30,9 @@ if state == 1:
         print("\nInformation about the battle system")
         print("It's like Pokémon but worse\n")
 
-        state = int(input("1. Begin PackanRPG"))
+        state = int(input("1. Begin PackanRPG\n\n"))
 
 elif state == 2:
     print("\nfuck you")
     exit()
 
-# Test

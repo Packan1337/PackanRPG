@@ -1,12 +1,18 @@
 class Enemy:
 
-    def __init__(self, enemy_name):
+    def __init__(self, enemy_name, enemy_hp, enemy_dmg):
         self.enemyName = enemy_name
-        self.enemyHP = range(10, 25)
-        self.enemyDMG = range(5, 12)
+        self.enemyHP = enemy_hp
+        self.enemyDMG = enemy_dmg
 
     def __str__(self):
         return self.enemyName
+
+
+enemyList = [Enemy("Baby Swamp Monster", 7, 3),
+             Enemy("Swamp Monster", 15, 5),
+             Enemy("Baby Lizard", 7, 3),
+             Enemy("Lizard", 15, 5)]
 
 
 class Hero:
@@ -25,6 +31,13 @@ class Hero:
             input('First of all, what is your name?: ')
         )
 
-    # heroName = str(input(""))
-    # heroHP = int(25)
-    # heroDMG = range(7, 15)
+class Item:
+
+    def __init__(self, item_name, item_heal, item_dmg, item_buff):
+        self.item_name = item_name
+        self.item_heal = item_heal
+        self.item_dmg = item_dmg
+        self.item_buff = item_buff
+
+
+items = [Item("Potion", 10, 0, 0)]

@@ -2,8 +2,6 @@
 import random
 from classes import Hero, Enemy
 
-dmg = random.randint(3, 10)
-
 
 def fight():
     print(Hero.heroName + " attacks " + Enemy.enemyName + "!")
