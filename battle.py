@@ -77,8 +77,9 @@ def battle():
         # TODO fix "x2" style indicator for duplicate items
         elif battle_option == 2:
 
-            print(get_amount(inventory), "items in inventory")
-            print(itemAmount)
+            print(get_amount(inventory), "items in inventory\n")
+            for item, count in itemAmount.items():
+                print(f"x{count} {item}")
 
             #for i in inventory:
                     #print(i)

@@ -68,6 +68,7 @@ inventory.sort(key=lambda x: x.itemName)
 itemAmount = Counter(getattr(Item, "itemName") for Item in inventory)
 
 
+
 # Get total amount of items.
 def get_amount(list):
     count = 0
