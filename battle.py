@@ -1,6 +1,6 @@
-# Module for battles
-import random
 import time
+from collections import defaultdict
+
 
 from classes import *
 
@@ -74,10 +74,14 @@ def battle():
             fight()
 
         # User clicks 2 to see inventory items.
+        # TODO fix "x2" style indicator for duplicate items
         elif battle_option == 2:
-            print("Items in inventory\n")
-            for i in inventory:
-                print(i)
+
+            print(get_amount(inventory), "items in inventory")
+            print(itemAmount)
+
+            #for i in inventory:
+                    #print(i)
 
             print("\n1. Back to battle menu")
             print("2. Select item")
