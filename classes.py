@@ -1,5 +1,3 @@
-
-
 class Enemy:
 
     def __init__(self, enemy_name, enemy_hp, enemy_dmg):
@@ -11,9 +9,9 @@ class Enemy:
         return self.enemyName
 
 
-enemyList = [Enemy("Baby Swamp Monster", 7, 3),
+enemyList = [Enemy("Baby Swamp Monster", 11, 3),
              Enemy("Swamp Monster", 15, 5),
-             Enemy("Baby Lizard", 7, 3),
+             Enemy("Baby Lizard", 11, 3),
              Enemy("Lizard", 15, 5)]
 
 
@@ -41,6 +39,9 @@ class Item:
         self.item_heal = item_heal
         self.item_dmg = item_dmg
         self.item_buff = item_buff
+
+    def __str__(self):
+        return self.item_name
 
 
 items = [Item("Potion", 10, 0, 0)]

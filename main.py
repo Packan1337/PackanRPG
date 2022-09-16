@@ -1,13 +1,8 @@
 # Main code for PackanRPG
 # Written by Packan, 2022
-
+import os, time
 from classes import mainHero
 from battle import battle
-
-# Resets config.txt file.
-erase = open("config.txt", "w")
-erase.truncate(0)
-erase.close()
 
 print("\nWelcome to PackanRPG!")
 
@@ -15,6 +10,16 @@ print("\nWelcome to PackanRPG!")
 config = open("config.txt", "w")
 config.write(input("First of all, what is your name?: "))
 config.close()
+
+time.sleep(0.5)
+print("\nSaving", end="")
+time.sleep(1)
+print(".", end="")
+time.sleep(1)
+print(".", end="")
+time.sleep(1)
+print(".")
+time.sleep(1)
 
 print("\n" + mainHero.heroName + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
 
@@ -39,7 +44,6 @@ if state == 1:
         state = int(input("1. Begin PackanRPG\n\n"))
 
 elif state == 2:
-    print("\nfuck you")
     battle()
     exit()
 

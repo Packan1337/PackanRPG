@@ -1,5 +1,7 @@
 # Module for battles
 import random
+import time
+
 from classes import enemyList, items
 from classes import mainHero
 
@@ -10,12 +12,44 @@ enemy = random.choice(enemyList)
 
 def fight():
 
-    print(mainHero.heroName + " attacks " + enemy.enemyName + "!")
-    print(enemy.enemyName + " lost " + mainHero.heroDMG + "HP!")
+    print(str(mainHero.heroName) + " attacks " + str(enemy.enemyName) + "!")
+    time.sleep(1.25)
+    print(str(enemy.enemyName) + " lost " + str(mainHero.heroDMG) + "HP!")
+    enemy.enemyHP -= mainHero.heroDMG
+    time.sleep(1.25)
 
     if enemy.enemyHP > 0:
-        print(enemy.enemyName + " attacks " + mainHero.heroName + "!")
-        print(mainHero.heroName + "lost" + enemy.enemyDMG + "HP!")
+        print((str(enemy.enemyName) + " has " + str(enemy.enemyHP) + "HP left!\n"))
+        time.sleep(1.25)
+
+    elif enemy.enemyHP <= 0:
+        time.sleep(0.75)
+        print(str(enemy.enemyName) + " was defeadet!")
+        time.sleep(1.25)
+
+    if enemy.enemyHP > 0:
+        print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
+        time.sleep(1.25)
+        print(str(mainHero.heroName) + " lost " + str(enemy.enemyDMG) + "HP!")
+        mainHero.heroHP -= enemy.enemyDMG
+        time.sleep(1.25)
+
+        if mainHero.heroHP > 0:
+            print((str(mainHero.heroName) + " has " + str(mainHero.heroHP) + "HP left!\n"))
+            time.sleep(1.25)
+
+        elif mainHero.heroHP <= 0:
+            time.sleep(0.75)
+            print(str(mainHero.heroName) + " died", end="")
+            time.sleep(1)
+            print(".", end="")
+            time.sleep(1)
+            print(".", end="")
+            time.sleep(1)
+            print(".")
+            time.sleep(1)
+            print("\nGAME OVER")
+            exit()
 
 
 def battle():
@@ -26,7 +60,7 @@ def battle():
 
     # Battle ends when the enemy loses all HP.
     while enemy.enemyHP > 0:
-        print("What will " + mainHero + " do?\n")
+        print("What will " + str(mainHero.heroName) + " do?\n")
 
         # Battle menu system.
         print("1. Fight")
@@ -43,7 +77,13 @@ def battle():
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
             print("Items in inventory\n")
-            print(*items, sep="\n")
+            print(str(*items), sep="\n")
+
+            print("\n1. Back to battle menu")
+            print("2. Use item")
+
+            battle_option = int(input("\nOption: "))
+            print("")
 
         # User clicks 3 to escape the battle.
         elif battle_option == 3:
