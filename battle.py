@@ -77,11 +77,11 @@ def battle():
         elif battle_option == 2:
 
             print(get_amount(inventory), "items in inventory\n")
-            for item, count in itemAmount.items():
-                print(f"x{count} {item}")
 
-            #for i in inventory:
-                    #print(i)
+            for item, count in itemAmount.items():
+                i = 1
+                print(f"{i}. x{count} {item}")
+                i += 1
 
             print("\n1. Back to battle menu")
             print("2. Select item")

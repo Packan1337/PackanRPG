@@ -64,9 +64,10 @@ inventory = [Item("Potion", 10, 0, 0, "Heals 10HP"),
 
 countedInventory = {i: inventory.count(i) for i in inventory}
 inventory.sort(key=lambda x: x.itemName)
-
 itemAmount = Counter(getattr(Item, "itemName") for Item in inventory)
 
+# TODO fix usage of items
+# TODO fix function that deletes item from inventory after usage
 
 
 # Get total amount of items.
@@ -75,6 +76,7 @@ def get_amount(list):
     for i in items:
         count += 1
     return count
+
 
 # User recieves item after battle.
 def obtain_item():
