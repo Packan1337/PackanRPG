@@ -41,8 +41,11 @@ class Item:
         self.itemBuff = float(item_buff)
         self.itemDesc = str(item_desc)
 
-    def __str__(self):
+    def __repr__(self):
         return str(self.itemName), str(self.itemDesc)
+
+    def __str__(self):
+        return str(self.itemName) + ": " + str(self.itemDesc)
 
 
 items = [Item("Potion", 10, 0, 0, "Heals 10HP"),

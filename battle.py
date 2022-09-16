@@ -8,6 +8,7 @@ from classes import *
 # Enemy is chosen from a list of enemies.
 enemy = random.choice(enemyList)
 
+
 def fight():
 
     print(str(mainHero.heroName) + " attacks " + str(enemy.enemyName) + "!")
@@ -54,16 +55,18 @@ def battle():
 
     print("")
     print(str(enemy.enemyName) + " appears!")
+    time.sleep(1)
     print(str(enemy.enemyName) + " has " + str(enemy.enemyHP) + "HP!\n")
+    time.sleep(1)
 
     # Battle ends when the enemy loses all HP.
     while enemy.enemyHP > 0:
         print("What will " + str(mainHero.heroName) + " do?\n")
 
         # Battle menu system.
-        print("1. Fight")
-        print("2. Items")
-        print("3. Escape")
+        print("1. Fight\n2. Items\n3. Escape")
+        #print("2. Items")
+        #print("3. Escape")
 
         battle_option = int(input("\nOption: "))
         print("")
@@ -75,7 +78,8 @@ def battle():
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
             print("Items in inventory\n")
-            print(items)
+            for i in items:
+                print(i)
 
             print("\n1. Back to battle menu")
             print("2. Select item")
