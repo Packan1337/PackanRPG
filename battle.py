@@ -74,7 +74,6 @@ def battle():
             fight()
 
         # User clicks 2 to see inventory items.
-        # TODO fix "x2" style indicator for duplicate items
         elif battle_option == 2:
 
             print(get_amount(inventory), "items in inventory\n")
