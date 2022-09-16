@@ -28,6 +28,12 @@ class Hero:
         return self.heroName
 
 
+config = open("config.txt", "r")
+name = config.read()
+config.close()
+mainHero = Hero(name)
+
+
 class Item:
 
     def __init__(self, item_name, item_heal, item_dmg, item_buff):

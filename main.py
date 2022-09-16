@@ -1,15 +1,22 @@
 # Main code for PackanRPG
 # Written by Packan, 2022
 
-from classes import Hero, Enemy
-import fight, battle
+from classes import mainHero
+from battle import battle
 
-# Main variables
+# Resets config.txt file.
+erase = open("config.txt", "w")
+erase.truncate(0)
+erase.close()
 
 print("\nWelcome to PackanRPG!")
 
-heroNameMain = Hero(input("First of all, what is your name?: "))
-print("\n" + str(heroNameMain.heroName) + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
+# Writing user's name in config.txt file.
+config = open("config.txt", "w")
+config.write(input("First of all, what is your name?: "))
+config.close()
+
+print("\n" + mainHero.heroName + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
 
 print("The menu system is very simple.")
 print("You will choose between a few numbers in order to select different options.")
@@ -33,5 +40,6 @@ if state == 1:
 
 elif state == 2:
     print("\nfuck you")
+    battle()
     exit()
 
