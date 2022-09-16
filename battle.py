@@ -2,13 +2,11 @@
 import random
 import time
 
-from classes import enemyList, items
-from classes import mainHero
+from classes import *
 
 
 # Enemy is chosen from a list of enemies.
 enemy = random.choice(enemyList)
-
 
 def fight():
 
@@ -77,10 +75,10 @@ def battle():
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
             print("Items in inventory\n")
-            print(str(*items), sep="\n")
+            print(items)
 
             print("\n1. Back to battle menu")
-            print("2. Use item")
+            print("2. Select item")
 
             battle_option = int(input("\nOption: "))
             print("")

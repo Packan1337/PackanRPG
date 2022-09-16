@@ -1,6 +1,6 @@
 # Main code for PackanRPG
 # Written by Packan, 2022
-import os, time
+import time
 from classes import mainHero
 from battle import battle
 
@@ -46,4 +46,3 @@ if state == 1:
 elif state == 2:
     battle()
     exit()
-

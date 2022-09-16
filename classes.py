@@ -34,14 +34,17 @@ mainHero = Hero(name)
 
 class Item:
 
-    def __init__(self, item_name, item_heal, item_dmg, item_buff):
-        self.item_name = item_name
-        self.item_heal = item_heal
-        self.item_dmg = item_dmg
-        self.item_buff = item_buff
+    def __init__(self, item_name, item_heal, item_dmg, item_buff, item_desc):
+        self.itemName = str(item_name)
+        self.itemHeal = float(item_heal)
+        self.itemDmg = float(item_dmg)
+        self.itemBuff = float(item_buff)
+        self.itemDesc = str(item_desc)
 
     def __str__(self):
-        return self.item_name
+        return str(self.itemName), str(self.itemDesc)
 
 
-items = [Item("Potion", 10, 0, 0)]
+items = [Item("Potion", 10, 0, 0, "Heals 10HP"),
+         Item("Fire flask", 0, 10, 0, "Deals 10 damage to enemy"),
+         Item("Damage buffer", 0, 0, 1.5, "Increases damage with 50%")]
