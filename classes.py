@@ -51,3 +51,8 @@ class Item:
 items = [Item("Potion", 10, 0, 0, "Heals 10HP"),
          Item("Fire flask", 0, 10, 0, "Deals 10 damage to enemy"),
          Item("Damage buffer", 0, 0, 1.5, "Increases damage with 50%")]
+
+
+inventory = [Item("Potion", 10, 0, 0, "Heals 10HP"),
+             Item("Fire flask", 0, 10, 0, "Deals 10 damage to enemy"),
+             Item("Damage buffer", 0, 0, 1.5, "Increases damage with 50%")]

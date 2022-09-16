@@ -65,8 +65,6 @@ def battle():
 
         # Battle menu system.
         print("1. Fight\n2. Items\n3. Escape")
-        #print("2. Items")
-        #print("3. Escape")
 
         battle_option = int(input("\nOption: "))
         print("")
@@ -78,7 +76,7 @@ def battle():
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
             print("Items in inventory\n")
-            for i in items:
+            for i in inventory:
                 print(i)
 
             print("\n1. Back to battle menu")
