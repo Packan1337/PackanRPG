@@ -76,18 +76,27 @@ def battle():
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
 
-            print(get_amount(inventory), "items in inventory\n")
+            desc = {item.itemName: item.itemDesc for item in inventory}
+            for item, count in itemAmountName.items():
 
-            for item, count in itemAmount.items():
-                i = 1
-                print(f"{i}. x{count} {item}")
-                i += 1
+                    print(f"x{count} {item}: {desc[item]}")
 
             print("\n1. Back to battle menu")
             print("2. Select item")
 
-            battle_option = int(input("\nOption: "))
+            item_select_state = int(input("\nOption: "))
             print("")
+
+            if item_select_state == 2:
+
+                item_select = int(input("Choose item to use: "))
+                # TODO add item usage + remove system
+                if item_select == 1:
+                    print(mainHero.heroName + " used a Damage Buffer!")
+                    mainHero.heroDMG = mainHero.heroDMG * 1.5
+                    print(mainHero.heroName + "'s damage increased by 50%!")
+
+                    #inventory.remove("Damage Buffer")
 
         # User clicks 3 to escape the battle.
         elif battle_option == 3:

@@ -2,6 +2,7 @@ import collections
 import random
 from collections import Counter
 
+
 class Enemy:
 
     def __init__(self, enemy_name, enemy_hp, enemy_dmg):
@@ -13,10 +14,10 @@ class Enemy:
         return self.enemyName
 
 
-enemyList = [Enemy("Baby Swamp Monster", 11, 3),
-             Enemy("Swamp Monster", 15, 5),
-             Enemy("Baby Lizard", 11, 3),
-             Enemy("Lizard", 15, 5)]
+enemyList = [Enemy("Lil' Swamp Monster", 11, 3),
+             Enemy("Fat Ass Swamp Monster", 15, 5),
+             Enemy("Lil' Lizard", 11, 3),
+             Enemy("Huge Fucking Lizard", 15, 5)]
 
 
 class Hero:
@@ -28,6 +29,7 @@ class Hero:
 
     def __str__(self):
         return self.heroName
+
 
 # Config file that saves user's name.
 config = open("config.txt", "r")
@@ -46,7 +48,7 @@ class Item:
         self.itemDesc = str(item_desc)
 
     def __repr__(self):
-        return str(self.itemName) + ": " + str(self.itemDesc)
+        return str(self.itemName), str(self.itemDesc)
 
 
 # Available items in the game.
@@ -64,7 +66,8 @@ inventory = [Item("Potion", 10, 0, 0, "Heals 10HP"),
 
 countedInventory = {i: inventory.count(i) for i in inventory}
 inventory.sort(key=lambda x: x.itemName)
-itemAmount = Counter(getattr(Item, "itemName") for Item in inventory)
+itemAmountName = Counter(getattr(Item, "itemName") for Item in inventory)
+itemAmountDesc = Counter(getattr(Item, "itemDesc") for Item in inventory)
 
 # TODO fix usage of items
 # TODO fix function that deletes item from inventory after usage

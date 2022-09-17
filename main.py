@@ -45,5 +45,5 @@ if state == 1:
         state = int(input("1. Begin PackanRPG\n\n"))
 
 elif state == 2:
-    battle()
+    print("fuck you")
     exit()
