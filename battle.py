@@ -1,7 +1,4 @@
 import time
-from collections import defaultdict
-
-
 from classes import *
 
 
@@ -9,23 +6,28 @@ from classes import *
 enemy = random.choice(enemyList)
 
 
+# TODO fix fight system, add enemy death check
 def fight():
 
+    # Hero attacks enemy.
     print(str(mainHero.heroName) + " attacks " + str(enemy.enemyName) + "!")
     time.sleep(1.25)
     print(str(enemy.enemyName) + " lost " + str(mainHero.heroDMG) + "HP!")
     enemy.enemyHP -= mainHero.heroDMG
     time.sleep(1.25)
 
+    # Check if enemy is alive, then prints HP value.
     if enemy.enemyHP > 0:
         print((str(enemy.enemyName) + " has " + str(enemy.enemyHP) + "HP left!\n"))
         time.sleep(1.25)
 
+    # Check if enemy is dead, then prints victory message.
     elif enemy.enemyHP <= 0:
         time.sleep(0.75)
-        print(str(enemy.enemyName) + " was defeadet!")
+        print(str(enemy.enemyName) + " was defeadet!\n")
         time.sleep(1.25)
 
+    # Enemy attacks hero.
     if enemy.enemyHP > 0:
         print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
         time.sleep(1.25)
@@ -33,10 +35,12 @@ def fight():
         mainHero.heroHP -= enemy.enemyDMG
         time.sleep(1.25)
 
+        # Checks if hero is alive, then prints HP value.
         if mainHero.heroHP > 0:
             print((str(mainHero.heroName) + " has " + str(mainHero.heroHP) + "HP left!\n"))
             time.sleep(1.25)
 
+        # Checks if hero is dead, then prints Game Over message.
         elif mainHero.heroHP <= 0:
             time.sleep(0.75)
             print(str(mainHero.heroName) + " died", end="")
@@ -76,10 +80,7 @@ def battle():
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
 
-            desc = {item.itemName: item.itemDesc for item in inventory}
-            for item, count in itemAmountName.items():
-
-                    print(f"x{count} {item}: {desc[item]}")
+            print(inventory)
 
             print("\n1. Back to battle menu")
             print("2. Select item")
@@ -90,14 +91,22 @@ def battle():
             if item_select_state == 2:
 
                 item_select = int(input("Choose item to use: "))
-                # TODO add item usage + remove system
+                # TODO add item usage system
                 if item_select == 1:
+
+                    # TODO check if user has item
+                    # User uses item.
                     print(mainHero.heroName + " used a Damage Buffer!")
                     mainHero.heroDMG = mainHero.heroDMG * 1.5
                     print(mainHero.heroName + "'s damage increased by 50%!")
 
-                    #inventory.remove("Damage Buffer")
+                    # Item is removed from user's inventory.
+                    # TODO add item remove system
 
         # User clicks 3 to escape the battle.
         elif battle_option == 3:
-            print("filler")
+            print("Escaped from battle")
+
+        # After battle, hero obtains a new item.
+        if enemy.enemyHP <= 0:
+            obtain_item()

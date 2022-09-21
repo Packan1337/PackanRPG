@@ -5,7 +5,6 @@ from classes import mainHero
 from battle import battle
 
 print("\nWelcome to PackanRPG!")
-battle()
 # Writing user's name in config.txt file.
 # TODO fix buffer error when writing user's name to config.txt
 config = open("config.txt", "w")
@@ -45,5 +44,5 @@ if state == 1:
         state = int(input("1. Begin PackanRPG\n\n"))
 
 elif state == 2:
-    print("fuck you")
+    battle()
     exit()
