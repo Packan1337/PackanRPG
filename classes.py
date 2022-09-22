@@ -1,6 +1,6 @@
 import collections
 import random
-from collections import Counter
+import time
 
 
 class Enemy:
@@ -14,11 +14,14 @@ class Enemy:
         return self.enemyName
 
 
-enemyList = [Enemy("Bazaar Turk", 11, 3),
+enemyList = [Enemy("Bazaar Turk", 23, 3),
              Enemy("Fat Ass Swamp Monster", 15, 5),
-             Enemy("Hairy Arab", 11, 3),
+             Enemy("Hairy Arab", 17, 3),
              Enemy("Huge Fucking Lizard", 15, 5),
              Enemy("Keyboard Warrior", 22, 5)]
+
+# Enemy is chosen from a list of enemies.
+enemy = random.choice(enemyList)
 
 
 class Hero:
@@ -37,27 +40,23 @@ config = open("config.txt", "r")
 name = config.read()
 config.close()
 mainHero = Hero(name)
+maxHP = mainHero.heroHP
 
 
 class Item:
 
     def __init__(self, item_name, item_heal, item_dmg, item_buff, item_desc):
         self.itemName = str(item_name)
-        self.itemHeal = float(item_heal)
-        self.itemDmg = float(item_dmg)
+        self.itemHeal = int(item_heal)
+        self.itemDmg = int(item_dmg)
         self.itemBuff = float(item_buff)
         self.itemDesc = str(item_desc)
 
-    def __repr__(self):
-        return str(self.itemName), str(self.itemDesc)
 
-
-# Available items in the game.
-itemList = [Item("Normal Potion", 10, 0, 0, "Heals 10HP"),
-            Item("Large Potion", 20, 0, 0, "Heals 20HP"),
-            Item("Fire Flask", 0, 10, 0, "Deals 10 damage to enemy"),
-            Item("Damage Buffer", 0, 0, 1.5, "Increases damage with 50%")]
-
+normalPotion = Item("Potion", 10, 0, 0, "Heals for 10HP.")
+largePotion = Item("Large Potion", 20, 0, 0, "Heals for 20HP.")
+fireFlask = Item("Fire Flask", 0, 20, 0, "Deals 20 damage.")
+damageBuffer = Item("Damage Buffer", 0, 0, 1.5, "Increases damage by 50%.")
 
 # Unique lists for each item.
 allNormalPotions = []
@@ -70,22 +69,26 @@ allDamageBuffers = []
 # Functions that generate new item object.
 def generate_normal_potion():
     print("Item reward: x1 Normal Potion\n")
-    allNormalPotions.append(itemList[0])
+    potion = Item("Potion", 10, 0, 0, "Heals for 10HP.")
+    allNormalPotions.append(potion)
 
 
 def generate_large_potion():
     print("Item reward: x1 Large Potion\n")
-    allNormalPotions.append(itemList[1])
+    large_potion = Item("Large Potion", 20, 0, 0, "Heals for 20HP.")
+    allLargePotions.append(large_potion)
 
 
 def generate_fire_flask():
     print("Item reward: x1 Fire Flask\n")
-    allNormalPotions.append(itemList[2])
+    fire_flask = Item("Fire Flask", 0, 20, 0, "Deals 20 damage.")
+    allFireFlasks.append(fire_flask)
 
 
 def generate_damage_buffer():
     print("Item reward: x1 Damage Buffer\n")
-    allNormalPotions.append(itemList[3])
+    damage_buffer = Item("Damage Buffer", 10, 0, 0, "Increases damage by 50%.")
+    allDamageBuffers.append(damage_buffer)
 
 
 # Function that selects random item object generator.
@@ -105,13 +108,77 @@ def obtain_item():
         generate_damage_buffer()
 
 
-# User's inventory.
+# Displays the user's inventory
+def display_items():
+    potion_amout = len(allNormalPotions)
+    large_potion_amount = len(allLargePotions)
+    fire_flask_amount = len(allFireFlasks)
+    damage_buffer_amount = len(allDamageBuffers)
+
+    print(f"{mainHero.heroName}'s inventory\n")
+
+    if potion_amout > 0:
+        print(f"x{potion_amout} Potion: Heals for 10HP.")
+
+    if large_potion_amount > 0:
+        print(f"x{large_potion_amount} Large Potion: Heals for 20HP.")
+
+    if fire_flask_amount > 0:
+        print(f"x{fire_flask_amount} Fire Flask: Deals 20 damage.")
+
+    if damage_buffer_amount > 0:
+        print(f"x{damage_buffer_amount} Damage Buffer: Increases damage by 50%.")
+
+    if potion_amout < 0 and large_potion_amount < 0 and fire_flask_amount < 0 and damage_buffer_amount < 0:
+        print("No items")
+
+
 inventory = [allNormalPotions, allLargePotions, allDamageBuffers, allFireFlasks]
 
-# TODO fix function that deletes item from inventory after usage
 
+def use_item(item):
+    using_item = item
+    print(f"{mainHero.heroName} used a {using_item.itemName}!")
+    time.sleep(1.25)
 
-# Get total amount of items.
+    if item == normalPotion:
+        temp_hp = mainHero.heroHP + normalPotion.itemHeal
 
+        if temp_hp > maxHP:
+            mainHero.heroHP = maxHP
 
-# User recieves item after battle.
+        elif temp_hp <= maxHP:
+            mainHero.heroHP = temp_hp
+
+        print(f"{mainHero.heroName} gained {using_item.itemHeal}!")
+        time.sleep(1.25)
+        print(f"{mainHero.heroName} has {mainHero.heroHP}!")
+        time.sleep(1.25)
+
+        allNormalPotions.pop()
+
+    elif item == largePotion:
+        temp_hp = mainHero.heroHP + largePotion.itemHeal
+
+        if temp_hp > maxHP:
+            mainHero.heroHP = maxHP
+
+        elif temp_hp <= maxHP:
+            mainHero.heroHP = temp_hp
+
+        print(f"{mainHero.heroName} gained {using_item.itemHeal}!")
+        time.sleep(1.25)
+        print(f"{mainHero.heroName} has {mainHero.heroHP}!")
+        time.sleep(1.25)
+
+        allLargePotions.pop()
+
+    elif item == fireFlask:
+        print(f"{mainHero.heroName} dealt {using_item.itemDMG} damage to {enemy.enemyName}!")
+        time.sleep(1.25)
+
+        allFireFlasks.pop()
+
+    elif item == damageBuffer:
+        allDamageBuffers.pop()
+

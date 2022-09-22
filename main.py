@@ -1,15 +1,14 @@
 # Main code for PackanRPG
 # Written by Packan, 2022
 import time
-from classes import mainHero
+from classes import *
 from battle import battle
 
 print("\nWelcome to PackanRPG!")
 # Writing user's name in config.txt file.
 # TODO fix buffer error when writing user's name to config.txt
-config = open("config.txt", "w")
-config.write(input("First of all, what is your name?: "))
-config.close()
+
+mainHero.heroName = input("First of all, what is your name?: ")
 
 time.sleep(0.5)
 print("\nSaving", end="")
@@ -45,4 +44,8 @@ if state == 1:
 
 elif state == 2:
     battle()
+
+    display_items()
+
+
     exit()

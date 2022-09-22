@@ -2,11 +2,6 @@ import time
 from classes import *
 
 
-# Enemy is chosen from a list of enemies.
-enemy = random.choice(enemyList)
-
-
-# TODO fix fight system, add enemy death check
 def fight():
 
     # Hero attacks enemy.
@@ -43,6 +38,7 @@ def fight():
         # Checks if hero is dead, then prints Game Over message.
         elif mainHero.heroHP <= 0:
             time.sleep(0.75)
+            print("")
             print(str(mainHero.heroName) + " died", end="")
             time.sleep(1)
             print(".", end="")
@@ -52,6 +48,7 @@ def fight():
             print(".")
             time.sleep(1)
             print("\nGAME OVER")
+            time.sleep(3)
             exit()
 
 
@@ -79,8 +76,17 @@ def battle():
 
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
-
-            print(inventory)
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            display_items()
 
             print("\n1. Back to battle menu")
             print("2. Select item")
@@ -94,11 +100,7 @@ def battle():
                 # TODO add item usage system
                 if item_select == 1:
 
-                    # TODO check if user has item
-                    # User uses item.
-                    print(mainHero.heroName + " used a Damage Buffer!")
-                    mainHero.heroDMG = mainHero.heroDMG * 1.5
-                    print(mainHero.heroName + "'s damage increased by 50%!")
+                    use_item(normalPotion)
 
                     # Item is removed from user's inventory.
                     # TODO add item remove system
@@ -109,4 +111,5 @@ def battle():
 
         # After battle, hero obtains a new item.
         if enemy.enemyHP <= 0:
-            obtain_item()
+            print("hello")
+
