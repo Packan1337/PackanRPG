@@ -5,9 +5,9 @@ import time
 class Enemy:
 
     def __init__(self, enemy_name, enemy_hp, enemy_dmg):
-        self.enemyName = enemy_name
-        self.enemyHP = enemy_hp
-        self.enemyDMG = enemy_dmg
+        self.enemyName = str(enemy_name)
+        self.enemyHP = float(enemy_hp)
+        self.enemyDMG = float(enemy_dmg)
 
     def __str__(self):
         return self.enemyName
@@ -26,28 +26,27 @@ enemy = random.choice(enemyList)
 class Hero:
 
     def __init__(self, hero_name):
-        self.heroName = hero_name
-        self.heroHP = 25
-        self.heroDMG = 10
+        self.heroName = str(hero_name)
+        self.heroHP = float(25)
+        self.heroDMG = float(10)
 
     def __str__(self):
         return self.heroName
 
 
-# Config file that saves user's name.
-config = open("config.txt", "r")
-name = config.read()
-config.close()
+# Saves user's name
+name = ""
 mainHero = Hero(name)
 maxHP = mainHero.heroHP
+reset_dmg = mainHero.heroDMG
 
 
 class Item:
 
     def __init__(self, item_name, item_heal, item_dmg, item_buff, item_desc):
         self.itemName = str(item_name)
-        self.itemHeal = int(item_heal)
-        self.itemDmg = int(item_dmg)
+        self.itemHeal = float(item_heal)
+        self.itemDmg = float(item_dmg)
         self.itemBuff = float(item_buff)
         self.itemDesc = str(item_desc)
 
@@ -64,7 +63,6 @@ allFireFlasks = []
 allDamageBuffers = []
 
 
-# TODO fix item obtain system
 # Functions that generate new item object.
 def generate_normal_potion():
     print("Item reward: x1 Normal Potion\n")
@@ -146,7 +144,7 @@ inventory = [allNormalPotions, allLargePotions, allDamageBuffers, allFireFlasks]
 
 def use_item(item):
     using_item = item
-    print(f"{mainHero.heroName} used a {using_item.itemName}!")
+    print(f"\n{mainHero.heroName} used a {using_item.itemName}!")
     time.sleep(1.25)
 
     if item == normalPotion:
@@ -160,7 +158,7 @@ def use_item(item):
 
         print(f"{mainHero.heroName} gained {using_item.itemHeal}HP!")
         time.sleep(1.25)
-        print(f"{mainHero.heroName} has {mainHero.heroHP}HP!")
+        print(f"{mainHero.heroName} has {mainHero.heroHP}HP!\n")
         time.sleep(1.25)
 
         allNormalPotions.pop()
@@ -176,18 +174,27 @@ def use_item(item):
 
         print(f"{mainHero.heroName} gained {using_item.itemHeal}HP!")
         time.sleep(1.25)
-        print(f"{mainHero.heroName} has {mainHero.heroHP}HP!")
+        print(f"{mainHero.heroName} has {mainHero.heroHP}HP!\n")
         time.sleep(1.25)
 
         allLargePotions.pop()
 
     elif item == fireFlask:
-        print(f"{mainHero.heroName} dealt {using_item.itemDMG} damage to {enemy.enemyName}!")
+        print(f"{mainHero.heroName} dealt {using_item.itemDmg} damage to {enemy.enemyName}!")
+        enemy.enemyHP -= fireFlask.itemDmg
         time.sleep(1.25)
+        if enemy.enemyHP <= 0:
+            time.sleep(0.75)
+            print(str(enemy.enemyName) + " was defeadet!\n")
+            time.sleep(1.25)
+
+        elif enemy.enemyHP > 0:
+            print(f"{enemy.enemyName} has {enemy.enemyHP}HP left!\n")
 
         allFireFlasks.pop()
 
     elif item == damageBuffer:
-        print(f"{mainHero.heroName}'s damage increased by 50%!")
+        print(f"{mainHero.heroName}'s damage increased by 50%!\n")
+        mainHero.heroDMG *= damageBuffer.itemBuff
 
         allDamageBuffers.pop()

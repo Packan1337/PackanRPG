@@ -75,6 +75,22 @@ def battle():
 
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
+            obtain_item()
             display_items()
 
             print("\n1. Back to battle menu")
@@ -85,11 +101,48 @@ def battle():
 
             if item_select_state == 2:
 
-                item_select = int(input("Choose item to use: "))
+                item_select_input = input("Type item to use: ")
+                item_select = item_select_input
 
-                if item_select == 1:
-
+                if item_select == "Potion":
                     use_item(normalPotion)
+
+                if item_select == "Large Potion":
+                    use_item(largePotion)
+
+                if item_select == "Fire Flask":
+                    use_item(fireFlask)
+
+                if item_select == "Damage Buffer":
+                    use_item(damageBuffer)
+
+                if enemy.enemyHP > 0:
+                    print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
+                    time.sleep(1.25)
+                    print(str(mainHero.heroName) + " lost " + str(enemy.enemyDMG) + "HP!")
+                    mainHero.heroHP -= enemy.enemyDMG
+                    time.sleep(1.25)
+
+                    # Checks if hero is alive, then prints HP value.
+                    if mainHero.heroHP > 0:
+                        print((str(mainHero.heroName) + " has " + str(mainHero.heroHP) + "HP left!\n"))
+                        time.sleep(1.25)
+
+                    # Checks if hero is dead, then prints Game Over message.
+                    elif mainHero.heroHP <= 0:
+                        time.sleep(0.75)
+                        print("")
+                        print(str(mainHero.heroName) + " died", end="")
+                        time.sleep(1)
+                        print(".", end="")
+                        time.sleep(1)
+                        print(".", end="")
+                        time.sleep(1)
+                        print(".")
+                        time.sleep(1)
+                        print("\nGAME OVER")
+                        time.sleep(3)
+                        exit()
 
         # User clicks 3 to escape the battle.
         elif battle_option == 3:
@@ -97,3 +150,4 @@ def battle():
 
     # After battle, hero obtains a new item.
     obtain_item()
+    mainHero.heroDMG = reset_dmg

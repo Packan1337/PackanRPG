@@ -3,8 +3,6 @@ from classes import *
 from battle import battle
 
 print("\nWelcome to PackanRPG!")
-# Writing user's name in config.txt file.
-# TODO fix buffer error when writing user's name to config.txt
 
 mainHero.heroName = input("First of all, what is your name?: ")
 
@@ -42,5 +40,4 @@ if state == 1:
 
 elif state == 2:
     battle()
-
     exit()
