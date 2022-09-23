@@ -1,4 +1,3 @@
-import collections
 import random
 import time
 
@@ -117,19 +116,28 @@ def display_items():
 
     print(f"{mainHero.heroName}'s inventory\n")
 
+    number_list = [1, 2, 3, 4]
+
     if potion_amout > 0:
-        print(f"x{potion_amout} Potion: Heals for 10HP.")
+        print(f"{number_list[0]} — x{potion_amout} Potion: Heals for 10HP.")
+        del number_list[0]
 
     if large_potion_amount > 0:
-        print(f"x{large_potion_amount} Large Potion: Heals for 20HP.")
+        print(f"{number_list[0]} — x{large_potion_amount} Large Potion: Heals for 20HP.")
+        del number_list[0]
 
     if fire_flask_amount > 0:
-        print(f"x{fire_flask_amount} Fire Flask: Deals 20 damage.")
+        print(f"{number_list[0]} — x{fire_flask_amount} Fire Flask: Deals 20 damage.")
+        del number_list[0]
 
     if damage_buffer_amount > 0:
-        print(f"x{damage_buffer_amount} Damage Buffer: Increases damage by 50%.")
+        print(f"{number_list[0]} — x{damage_buffer_amount} Damage Buffer: Increases damage by 50%.")
+        del number_list[0]
 
-    if potion_amout < 0 and large_potion_amount < 0 and fire_flask_amount < 0 and damage_buffer_amount < 0:
+    if damage_buffer_amount <= 0 \
+            and fire_flask_amount <= 0 \
+            and large_potion_amount <= 0 \
+            and potion_amout <= 0:
         print("No items")
 
 
@@ -150,9 +158,9 @@ def use_item(item):
         elif temp_hp <= maxHP:
             mainHero.heroHP = temp_hp
 
-        print(f"{mainHero.heroName} gained {using_item.itemHeal}!")
+        print(f"{mainHero.heroName} gained {using_item.itemHeal}HP!")
         time.sleep(1.25)
-        print(f"{mainHero.heroName} has {mainHero.heroHP}!")
+        print(f"{mainHero.heroName} has {mainHero.heroHP}HP!")
         time.sleep(1.25)
 
         allNormalPotions.pop()
@@ -166,9 +174,9 @@ def use_item(item):
         elif temp_hp <= maxHP:
             mainHero.heroHP = temp_hp
 
-        print(f"{mainHero.heroName} gained {using_item.itemHeal}!")
+        print(f"{mainHero.heroName} gained {using_item.itemHeal}HP!")
         time.sleep(1.25)
-        print(f"{mainHero.heroName} has {mainHero.heroHP}!")
+        print(f"{mainHero.heroName} has {mainHero.heroHP}HP!")
         time.sleep(1.25)
 
         allLargePotions.pop()
@@ -180,5 +188,6 @@ def use_item(item):
         allFireFlasks.pop()
 
     elif item == damageBuffer:
-        allDamageBuffers.pop()
+        print(f"{mainHero.heroName}'s damage increased by 50%!")
 
+        allDamageBuffers.pop()

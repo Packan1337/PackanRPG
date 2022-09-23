@@ -1,6 +1,4 @@
-# Main code for PackanRPG
 # Written by Packan, 2022
-import time
 from classes import *
 from battle import battle
 
@@ -44,8 +42,5 @@ if state == 1:
 
 elif state == 2:
     battle()
-
-    display_items()
-
 
     exit()

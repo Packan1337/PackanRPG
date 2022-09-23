@@ -1,4 +1,3 @@
-import time
 from classes import *
 
 
@@ -76,16 +75,6 @@ def battle():
 
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
             display_items()
 
             print("\n1. Back to battle menu")
@@ -97,19 +86,14 @@ def battle():
             if item_select_state == 2:
 
                 item_select = int(input("Choose item to use: "))
-                # TODO add item usage system
+
                 if item_select == 1:
 
                     use_item(normalPotion)
-
-                    # Item is removed from user's inventory.
-                    # TODO add item remove system
 
         # User clicks 3 to escape the battle.
         elif battle_option == 3:
             print("Escaped from battle")
 
-        # After battle, hero obtains a new item.
-        if enemy.enemyHP <= 0:
-            print("hello")
-
+    # After battle, hero obtains a new item.
+    obtain_item()
