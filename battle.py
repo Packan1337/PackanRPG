@@ -1,3 +1,5 @@
+import time
+
 from classes import *
 
 
@@ -6,13 +8,13 @@ def fight():
     # Hero attacks enemy.
     print(str(mainHero.heroName) + " attacks " + str(enemy.enemyName) + "!")
     time.sleep(1.25)
-    print(str(enemy.enemyName) + " lost " + str(mainHero.heroDMG) + "HP!")
+    print(str(enemy.enemyName) + " lost " + str(round(mainHero.heroDMG)) + "HP!")
     enemy.enemyHP -= mainHero.heroDMG
     time.sleep(1.25)
 
     # Check if enemy is alive, then prints HP value.
     if enemy.enemyHP > 0:
-        print((str(enemy.enemyName) + " has " + str(enemy.enemyHP) + "HP left!\n"))
+        print((str(enemy.enemyName) + " has " + str(round(enemy.enemyHP)) + "HP left!\n"))
         time.sleep(1.25)
 
     # Check if enemy is dead, then prints victory message.
@@ -25,13 +27,13 @@ def fight():
     if enemy.enemyHP > 0:
         print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
         time.sleep(1.25)
-        print(str(mainHero.heroName) + " lost " + str(enemy.enemyDMG) + "HP!")
+        print(str(mainHero.heroName) + " lost " + str(round(enemy.enemyDMG)) + "HP!")
         mainHero.heroHP -= enemy.enemyDMG
         time.sleep(1.25)
 
         # Checks if hero is alive, then prints HP value.
         if mainHero.heroHP > 0:
-            print((str(mainHero.heroName) + " has " + str(mainHero.heroHP) + "HP left!\n"))
+            print((str(mainHero.heroName) + " has " + str(round(mainHero.heroHP)) + "HP left!\n"))
             time.sleep(1.25)
 
         # Checks if hero is dead, then prints Game Over message.
@@ -56,12 +58,13 @@ def battle():
     print("")
     print(str(enemy.enemyName) + " appears!")
     time.sleep(1)
-    print(str(enemy.enemyName) + " has " + str(enemy.enemyHP) + "HP!\n")
+    print(str(enemy.enemyName) + " has " + str(round(enemy.enemyHP)) + "HP!\n")
     time.sleep(1)
 
     # Battle ends when the enemy loses all HP.
     while enemy.enemyHP > 0:
         print("What will " + str(mainHero.heroName) + " do?\n")
+        time.sleep(1)
 
         # Battle menu system.
         print("1. Fight\n2. Items\n3. Escape")
@@ -75,22 +78,6 @@ def battle():
 
         # User clicks 2 to see inventory items.
         elif battle_option == 2:
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
-            obtain_item()
             display_items()
 
             print("\n1. Back to battle menu")
@@ -119,13 +106,13 @@ def battle():
                 if enemy.enemyHP > 0:
                     print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
                     time.sleep(1.25)
-                    print(str(mainHero.heroName) + " lost " + str(enemy.enemyDMG) + "HP!")
+                    print(str(mainHero.heroName) + " lost " + str(round(enemy.enemyDMG)) + "HP!")
                     mainHero.heroHP -= enemy.enemyDMG
                     time.sleep(1.25)
 
                     # Checks if hero is alive, then prints HP value.
                     if mainHero.heroHP > 0:
-                        print((str(mainHero.heroName) + " has " + str(mainHero.heroHP) + "HP left!\n"))
+                        print((str(mainHero.heroName) + " has " + str(round(mainHero.heroHP)) + "HP left!\n"))
                         time.sleep(1.25)
 
                     # Checks if hero is dead, then prints Game Over message.

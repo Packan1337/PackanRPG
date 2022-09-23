@@ -1,8 +1,12 @@
 # Written by Packan, 2022
+import time
+
 from classes import *
 from battle import battle
 
+time.sleep(2)
 print("\nWelcome to PackanRPG!")
+time.sleep(2)
 
 mainHero.heroName = input("First of all, what is your name?: ")
 
@@ -17,27 +21,64 @@ print(".")
 time.sleep(1)
 
 print("\n" + mainHero.heroName + ", I hope you're ready for the most mediocre RPG adventure of your lifetime!\n")
-
+time.sleep(3)
 print("The menu system is very simple.")
+time.sleep(2)
 print("You will choose between a few numbers in order to select different options.")
+time.sleep(3)
 print("Type the corresponding number and hit enter to select.\n")
-
-state = int(input("1. I understand\n2. I don't understand because I am stupid\n\n"))
+time.sleep(2)
+print("1. I understand\n2. I don't understand because I am stupid\n")
+state = int(input("Option: "))
 
 if state == 1:
     print("\nGreat!")
+    time.sleep(1)
     print("Would you like to begin PackanRPG or read about the battle system?\n")
-    state = int(input("1. Begin PackanRPG\n2. Read about the battle system\n\n"))
+    time.sleep(2)
+    print("1. Begin PackanRPG\n2. Read about the battle system\n")
+    state = int(input("Option: "))
 
     if state == 1:
-        print("\nPackanRPG now starting...")
+        print("\nPackanRPG now starting", end="")
+        time.sleep(1)
+        print(".", end="")
+        time.sleep(1)
+        print(".", end="")
+        time.sleep(1)
+        print(".", end="")
+        time.sleep(1)
 
     elif state == 2:
         print("\nInformation about the battle system")
-        print("It's like Pokémon but worse\n")
+        time.sleep(1)
+        print("It's like Pokémon", end="")
+        time.sleep(1.5)
+        print(" but worse\n")
+        time.sleep(1)
 
-        state = int(input("1. Begin PackanRPG\n\n"))
+        print("1. Begin PackanRPG\n")
+        state = int(input("Option: "))
+
+        print("\nPackanRPG now starting", end="")
+        time.sleep(1)
+        print(".", end="")
+        time.sleep(1)
+        print(".", end="")
+        time.sleep(1)
+        print(".\n\n")
+        time.sleep(1)
 
 elif state == 2:
-    battle()
+    print("\nfuck you")
+    time.sleep(2)
     exit()
+
+
+print("Let's start with an enemy encounter.")
+time.sleep(2)
+print("Enemies are weak, but will scale up in difficulty as you level up.")
+time.sleep(3)
+print("Good luck, have fun!")
+time.sleep(2)
+battle()

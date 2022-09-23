@@ -65,7 +65,7 @@ allDamageBuffers = []
 
 # Functions that generate new item object.
 def generate_normal_potion():
-    print("Item reward: x1 Normal Potion\n")
+    print("Item reward: x1 Potion\n")
     potion = Item("Potion", 10, 0, 0, "Heals for 10HP.")
     allNormalPotions.append(potion)
 
@@ -156,9 +156,9 @@ def use_item(item):
         elif temp_hp <= maxHP:
             mainHero.heroHP = temp_hp
 
-        print(f"{mainHero.heroName} gained {using_item.itemHeal}HP!")
+        print(f"{mainHero.heroName} gained {round(using_item.itemHeal)}HP!")
         time.sleep(1.25)
-        print(f"{mainHero.heroName} has {mainHero.heroHP}HP!\n")
+        print(f"{mainHero.heroName} has {round(mainHero.heroHP)}HP!\n")
         time.sleep(1.25)
 
         allNormalPotions.pop()
@@ -172,15 +172,15 @@ def use_item(item):
         elif temp_hp <= maxHP:
             mainHero.heroHP = temp_hp
 
-        print(f"{mainHero.heroName} gained {using_item.itemHeal}HP!")
+        print(f"{mainHero.heroName} gained {round(using_item.itemHeal)}HP!")
         time.sleep(1.25)
-        print(f"{mainHero.heroName} has {mainHero.heroHP}HP!\n")
+        print(f"{mainHero.heroName} has {round(mainHero.heroHP)}HP!\n")
         time.sleep(1.25)
 
         allLargePotions.pop()
 
     elif item == fireFlask:
-        print(f"{mainHero.heroName} dealt {using_item.itemDmg} damage to {enemy.enemyName}!")
+        print(f"{mainHero.heroName} dealt {round(using_item.itemDmg)} damage to {enemy.enemyName}!")
         enemy.enemyHP -= fireFlask.itemDmg
         time.sleep(1.25)
         if enemy.enemyHP <= 0:
@@ -189,7 +189,7 @@ def use_item(item):
             time.sleep(1.25)
 
         elif enemy.enemyHP > 0:
-            print(f"{enemy.enemyName} has {enemy.enemyHP}HP left!\n")
+            print(f"{enemy.enemyName} has {round(enemy.enemyHP)}HP left!\n")
 
         allFireFlasks.pop()
 
