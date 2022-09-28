@@ -1,22 +1,20 @@
 # Written by Packan, 2022
-import time
-
 from classes import *
 from battle import battle
 
-time.sleep(2)
+time.sleep(1)
 print("\nWelcome to PackanRPG!")
-time.sleep(2)
+time.sleep(1)
 
+# This was written before I knew about f-strings lol
 mainHero.heroName = input("First of all, what is your name?: ")
-
 time.sleep(0.5)
 print("\nSaving", end="")
-time.sleep(1)
+time.sleep(0.5)
 print(".", end="")
-time.sleep(1)
+time.sleep(0.5)
 print(".", end="")
-time.sleep(1)
+time.sleep(0.5)
 print(".")
 time.sleep(1)
 
@@ -46,7 +44,7 @@ if state == 1:
         time.sleep(1)
         print(".", end="")
         time.sleep(1)
-        print(".", end="")
+        print(".\n")
         time.sleep(1)
 
     elif state == 2:
@@ -82,3 +80,16 @@ time.sleep(3)
 print("Good luck, have fun!")
 time.sleep(2)
 battle()
+
+time.sleep(1)
+while True:
+    print("\nYou are now playing the alpha version of PackanRPG.")
+    print("There is not much more to play yet.")
+    print("Would you like to do another battle?\n")
+    print("1. Another battle\n2. Exit PackanRPG\n")
+    extra_option = int(input("Option: "))
+
+    if extra_option == 1:
+        battle()
+    else:
+        exit()

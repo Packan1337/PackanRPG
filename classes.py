@@ -19,8 +19,11 @@ enemyList = [Enemy("Bazaar Turk", 23, 3),
              Enemy("Huge Fucking Lizard", 15, 5),
              Enemy("Keyboard Warrior", 22, 5)]
 
-# Enemy is chosen from a list of enemies.
-enemy = random.choice(enemyList)
+bt_max_hp = enemyList[0].enemyHP
+fasm_max_hp = enemyList[1].enemyHP
+ha_max_hp = enemyList[2].enemyHP
+hfl_max_hp = enemyList[3].enemyHP
+kw_max_hp = enemyList[4].enemyHP
 
 
 class Hero:
@@ -191,10 +194,68 @@ def use_item(item):
         elif enemy.enemyHP > 0:
             print(f"{enemy.enemyName} has {round(enemy.enemyHP)}HP left!\n")
 
+            # Enemy attacks hero.
+            if enemy.enemyHP > 0:
+                print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
+                time.sleep(1.25)
+                print(str(mainHero.heroName) + " lost " + str(round(enemy.enemyDMG)) + "HP!")
+                mainHero.heroHP -= enemy.enemyDMG
+                time.sleep(1.25)
+
+                # Checks if hero is alive, then prints HP value.
+                if mainHero.heroHP > 0:
+                    print((str(mainHero.heroName) + " has " + str(round(mainHero.heroHP)) + "HP left!\n"))
+                    time.sleep(1.25)
+
+                # Checks if hero is dead, then prints Game Over message.
+                elif mainHero.heroHP <= 0:
+                    time.sleep(0.75)
+                    print("")
+                    print(str(mainHero.heroName) + " died", end="")
+                    time.sleep(1)
+                    print(".", end="")
+                    time.sleep(1)
+                    print(".", end="")
+                    time.sleep(1)
+                    print(".")
+                    time.sleep(1)
+                    print("\nGAME OVER")
+                    time.sleep(3)
+                    exit()
+
         allFireFlasks.pop()
 
     elif item == damageBuffer:
         print(f"{mainHero.heroName}'s damage increased by 50%!\n")
+        time.sleep(1.25)
         mainHero.heroDMG *= damageBuffer.itemBuff
+
+        if enemy.enemyHP > 0:
+            print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
+            time.sleep(1.25)
+            print(str(mainHero.heroName) + " lost " + str(round(enemy.enemyDMG)) + "HP!")
+            mainHero.heroHP -= enemy.enemyDMG
+            time.sleep(1.25)
+
+            # Checks if hero is alive, then prints HP value.
+            if mainHero.heroHP > 0:
+                print((str(mainHero.heroName) + " has " + str(round(mainHero.heroHP)) + "HP left!\n"))
+                time.sleep(1.25)
+
+            # Checks if hero is dead, then prints Game Over message.
+            elif mainHero.heroHP <= 0:
+                time.sleep(0.75)
+                print("")
+                print(str(mainHero.heroName) + " died", end="")
+                time.sleep(1)
+                print(".", end="")
+                time.sleep(1)
+                print(".", end="")
+                time.sleep(1)
+                print(".")
+                time.sleep(1)
+                print("\nGAME OVER")
+                time.sleep(3)
+                exit()
 
         allDamageBuffers.pop()
