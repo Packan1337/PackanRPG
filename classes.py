@@ -192,6 +192,7 @@ def use_item(item, enemy):
                 time.sleep(3)
                 exit()
 
+        # Removes item.
         allNormalPotions.pop()
 
     elif item == largePotion:
@@ -236,6 +237,7 @@ def use_item(item, enemy):
                 time.sleep(3)
                 exit()
 
+                # Removes item.
         allLargePotions.pop()
 
     elif item == fireFlask:
@@ -279,6 +281,7 @@ def use_item(item, enemy):
                     time.sleep(3)
                     exit()
 
+        # Removes item.
         allFireFlasks.pop()
 
     elif item == damageBuffer:
@@ -314,4 +317,5 @@ def use_item(item, enemy):
                 time.sleep(3)
                 exit()
 
+        # Removes item.
         allDamageBuffers.pop()

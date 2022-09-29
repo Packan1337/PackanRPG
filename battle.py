@@ -177,5 +177,5 @@ def battle():
             time.sleep(1.25)
             break
 
-    # After battle, hero obtains a new item.
+    # After battle, hero obtains an item.
     mainHero.heroDMG = reset_dmg
