@@ -145,7 +145,7 @@ def display_items():
 inventory = [allNormalPotions, allLargePotions, allDamageBuffers, allFireFlasks]
 
 
-def use_item(item):
+def use_item(item, enemy):
     using_item = item
     print(f"\n{mainHero.heroName} used a {using_item.itemName}!")
     time.sleep(1.25)
@@ -164,6 +164,34 @@ def use_item(item):
         print(f"{mainHero.heroName} has {round(mainHero.heroHP)}HP!\n")
         time.sleep(1.25)
 
+        if enemy.enemyHP > 0:
+            print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
+            time.sleep(1.25)
+            print(str(mainHero.heroName) + " lost " + str(round(enemy.enemyDMG)) + "HP!")
+            mainHero.heroHP -= enemy.enemyDMG
+            time.sleep(1.25)
+
+            # Checks if hero is alive, then prints HP value.
+            if mainHero.heroHP > 0:
+                print((str(mainHero.heroName) + " has " + str(round(mainHero.heroHP)) + "HP left!\n"))
+                time.sleep(1.25)
+
+            # Checks if hero is dead, then prints Game Over message.
+            elif mainHero.heroHP <= 0:
+                time.sleep(0.75)
+                print("")
+                print(str(mainHero.heroName) + " died", end="")
+                time.sleep(1)
+                print(".", end="")
+                time.sleep(1)
+                print(".", end="")
+                time.sleep(1)
+                print(".")
+                time.sleep(1)
+                print("\nGAME OVER")
+                time.sleep(3)
+                exit()
+
         allNormalPotions.pop()
 
     elif item == largePotion:
@@ -179,6 +207,34 @@ def use_item(item):
         time.sleep(1.25)
         print(f"{mainHero.heroName} has {round(mainHero.heroHP)}HP!\n")
         time.sleep(1.25)
+
+        if enemy.enemyHP > 0:
+            print(str(enemy.enemyName) + " attacks " + str(mainHero.heroName) + "!")
+            time.sleep(1.25)
+            print(str(mainHero.heroName) + " lost " + str(round(enemy.enemyDMG)) + "HP!")
+            mainHero.heroHP -= enemy.enemyDMG
+            time.sleep(1.25)
+
+            # Checks if hero is alive, then prints HP value.
+            if mainHero.heroHP > 0:
+                print((str(mainHero.heroName) + " has " + str(round(mainHero.heroHP)) + "HP left!\n"))
+                time.sleep(1.25)
+
+            # Checks if hero is dead, then prints Game Over message.
+            elif mainHero.heroHP <= 0:
+                time.sleep(0.75)
+                print("")
+                print(str(mainHero.heroName) + " died", end="")
+                time.sleep(1)
+                print(".", end="")
+                time.sleep(1)
+                print(".", end="")
+                time.sleep(1)
+                print(".")
+                time.sleep(1)
+                print("\nGAME OVER")
+                time.sleep(3)
+                exit()
 
         allLargePotions.pop()
 

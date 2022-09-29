@@ -26,16 +26,45 @@ print("You will choose between a few numbers in order to select different option
 time.sleep(3)
 print("Type the corresponding number and hit enter to select.\n")
 time.sleep(2)
-print("1. I understand\n2. I don't understand because I am stupid\n")
-state = int(input("Option: "))
+
+while True:
+    try:
+        print("1. I understand\n2. I don't understand because I am stupid\n")
+        state = int(input("Option: "))
+
+        if state != 1 and state != 2:
+            print("\n(Select by using a valid number!)\n")
+            time.sleep(1.25)
+
+        if state == 1 or state == 2:
+            break
+
+    except ValueError:
+        print("\n(Select by using a valid number!)\n")
+        time.sleep(1.25)
+
 
 if state == 1:
     print("\nGreat!")
     time.sleep(1)
     print("Would you like to begin PackanRPG or read about the battle system?\n")
-    time.sleep(2)
-    print("1. Begin PackanRPG\n2. Read about the battle system\n")
-    state = int(input("Option: "))
+
+    while True:
+        try:
+            time.sleep(1.25)
+            print("1. Begin PackanRPG\n2. Read about the battle system\n")
+            state = int(input("Option: "))
+
+            if state != 1 and state != 2:
+                print("\n(Select by using a valid number!)\n")
+
+            if state == 1 or state == 2:
+                break
+
+        except ValueError:
+            print("\n(Select by using a valid number!)\n")
+
+
 
     if state == 1:
         print("\nPackanRPG now starting", end="")
@@ -83,7 +112,7 @@ battle()
 
 time.sleep(1)
 while True:
-    print("\nYou are now playing the alpha version of PackanRPG.")
+    print("\nYou are playing an alpha version of PackanRPG.")
     print("There is not much more to play yet.")
     print("Would you like to do another battle?\n")
     print("1. Another battle\n2. Exit PackanRPG\n")

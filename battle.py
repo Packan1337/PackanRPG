@@ -105,8 +105,10 @@ def battle():
                     break
 
                 print("(Select by using a valid number!)\n")
+                time.sleep(1.25)
             except ValueError:
                 print("\n(Select by using a valid number!)\n")
+                time.sleep(1.25)
 
         # User clicks 1 for fight.
         if battle_option == 1:
@@ -146,19 +148,19 @@ def battle():
                         time.sleep(0.5)
 
                         if item_select == "Potion":
-                            use_item(normalPotion)
+                            use_item(normalPotion, enemy)
                             break
 
                         if item_select == "Large Potion":
-                            use_item(largePotion)
+                            use_item(largePotion, enemy)
                             break
 
                         if item_select == "Fire Flask":
-                            use_item(fireFlask)
+                            use_item(fireFlask, enemy)
                             break
 
                         if item_select == "Damage Buffer":
-                            use_item(damageBuffer)
+                            use_item(damageBuffer, enemy)
                             break
 
                         if item_select != "Potion" or "Large Potion" or "Fire Flask" or "Damage Buffer":
