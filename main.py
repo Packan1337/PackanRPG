@@ -64,8 +64,6 @@ if state == 1:
         except ValueError:
             print("\n(Select by using a valid number!)\n")
 
-
-
     if state == 1:
         print("\nPackanRPG now starting", end="")
         time.sleep(1)
